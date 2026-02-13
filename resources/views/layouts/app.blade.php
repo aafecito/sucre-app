@@ -55,15 +55,4 @@
       </div>
     @endif
   @endguest
-
-  @push('scripts')
-    <script type="text/javascript">
-      if (window.toastr) {
-        toastr.info('Are you a 6 fingred man');
-      } else {
-        console.warn('toastr not available yet');
-      }
-    </script>
-  @endpush
-
 </x-layouts.base>

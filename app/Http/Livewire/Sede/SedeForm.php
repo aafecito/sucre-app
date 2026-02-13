@@ -80,8 +80,9 @@ class SedeForm extends Component
 
         // Limpiar el formulario
         $this->sede = new Sedes();
-        $this->dispatch('$refresh')->to(SedeGrid::class);
         $this->dispatch('sede-guardada');
+        $this->dispatch('notify', type: 'success', message: 'Sede guardada exitosamente');
+
     }
 
     #[On('reset-formulario')]

@@ -56,6 +56,12 @@
     integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
+    if (window.toastr) {
+      toastr.options = toastr.options || {};
+      toastr.options.positionClass = 'toast-bottom-center';
+    }
+  </script>
+  <script>
     document.addEventListener('livewire:init', () => {
       Livewire.on('notify', ({
         type = 'info',

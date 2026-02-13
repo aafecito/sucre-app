@@ -25,11 +25,12 @@ class SedeGrid extends Component
         $sedes = Sede::paginate(5);
 
         return view('livewire.sede.sede-grid', [
-            'sedes' => Sede::where(function ($query) {
-                $query->where('descripcion', 'like', '%' . $this->search . '%')
-                    ->orWhere('codigo', 'like', '%' . $this->search . '%')
-                    ->orWhere('direccion', 'like', '%' . $this->search . '%');
-            })
+            'sedes' => Sede::activas()
+                ->where(function ($query) {
+                    $query->where('descripcion', 'like', '%' . $this->search . '%')
+                        ->orWhere('codigo', 'like', '%' . $this->search . '%')
+                        ->orWhere('direccion', 'like', '%' . $this->search . '%');
+                })
                 ->orderBy('id_sede', 'desc')
                 ->paginate(10),
         ]);
@@ -68,6 +69,7 @@ class SedeGrid extends Component
         //Sede::where('id_sede', $this->editingId)->update($this->sedesEditing);
 
         $this->editingId = 0;
+        $this->dispatch('notify', type: 'success', message: 'Sede editada exitosamente');
     }
 
     public function delete($id)
@@ -78,6 +80,7 @@ class SedeGrid extends Component
 
         $sede = Sede::findOrFail($id);
         $sede->update(['estado' => 0]);
+        $this->dispatch('notify', type: 'success', message: 'Sede eliminada exitosamente');
     }
     // public function render()
     // {

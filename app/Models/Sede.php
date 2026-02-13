@@ -18,4 +18,9 @@ class Sede extends Model
         'telefono',
         'estado',
     ];
+
+    public function scopeActivas($query)
+    {
+        return $query->where('estado', 1);
+    }
 }
