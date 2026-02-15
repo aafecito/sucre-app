@@ -118,8 +118,8 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ Route::currentRouteName() == 'billing' ? 'active' : '' }}"
-          href="{{ route('billing') }}">
+        <a class="nav-link {{ Route::currentRouteName() == 'carrera' ? 'active' : '' }}"
+          href="{{ route('carrera') }}">
           <div
             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -142,11 +142,12 @@
               </g>
             </svg>
           </div>
-          <span class="nav-link-text ms-1">Billing</span>
+          <span class="nav-link-text ms-1">Carreras</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ Route::currentRouteName() == 'rtl' ? 'active' : '' }}" href="{{ route('rtl') }}">
+        <a class="nav-link {{ Route::currentRouteName() == 'asignatura' ? 'active' : '' }}"
+          href="{{ route('asignatura') }}">
           <div
             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1"
@@ -172,13 +173,13 @@
               </g>
             </svg>
           </div>
-          <span class="nav-link-text ms-1">RTL</span>
+          <span class="nav-link-text ms-1">Asignaturas</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}"
-          href="{{ route('profile') }}">
+        <a class="nav-link {{ Route::currentRouteName() == 'usuario' ? 'active' : '' }}"
+          href="{{ route('usuario') }}">
           <div
             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
@@ -204,7 +205,7 @@
               </g>
             </svg>
           </div>
-          <span class="nav-link-text ms-1">Profile</span>
+          <span class="nav-link-text ms-1">Usuarios</span>
         </a>
       </li>
       <li class="nav-item">

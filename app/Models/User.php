@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -19,7 +19,6 @@ class User extends Authenticatable
      *
      * @var array
      */
-
     protected $guarded = [];
 
     /**
@@ -40,4 +39,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function usuarios(): HasMany
+    {
+        return $this->hasMany(Usuario::class, 'id_user', 'id');
+    }
+
+    // Nota: La relación con asignaturas se hace a través de Usuario, no de User,
+    // ya que los docentes están registrados en la tabla usuarios
+    // Ver Usuario::class para la relación asignaturasAsignadas()
 }

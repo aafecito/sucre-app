@@ -14,6 +14,9 @@ use App\Http\Livewire\StaticSignIn;
 use App\Http\Livewire\StaticSignUp;
 use App\Http\Livewire\Rtl;
 use App\Http\Livewire\Sede\Sede;
+use App\Http\Livewire\Carrera\Carrera;
+use App\Http\Livewire\Asignatura\Asignatura;
+use App\Http\Livewire\Usuario\Usuario;
 
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\LaravelExamples\UserManagement;
@@ -53,4 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/laravel-user-management', UserManagement::class)->name('user-management');
 
     Route::get('/sede', Sede::class)->name('sede');
+    Route::get('/carrera', Carrera::class)->name('carrera');
+    Route::get('/asignatura', Asignatura::class)->name('asignatura');
+    Route::get('/usuario', Usuario::class)->name('usuario');
 });
