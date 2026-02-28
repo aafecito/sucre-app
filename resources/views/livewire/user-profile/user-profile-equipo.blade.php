@@ -3,20 +3,6 @@
     <h6 class="mb-0">{{ __('Asignar Equipos/Asignaturas') }}</h6>
   </div>
   <div class="card-body pt-4 p-3">
-    @if ($mensaje_exito)
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ $mensaje_exito }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    @endif
-
-    @if ($mensaje_error)
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ $mensaje_error }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    @endif
-
     <form wire:submit.prevent="guardarAsignatura">
       <div class="mb-3">
         <label for="asignatura_seleccionada" class="form-label">{{ __('Seleccionar Asignatura') }}</label>

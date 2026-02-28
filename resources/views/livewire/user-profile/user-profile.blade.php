@@ -20,7 +20,7 @@
               {{ $usuario->primer_nombre . ' ' . ($usuario->segundo_nombre ? $usuario->segundo_nombre . ' ' : '') . $usuario->primer_apellido . ' ' . ($usuario->segundo_apellido ?? '') }}
             </h5>
             <p class="mb-0 font-weight-bold text-sm">
-              {{ $usuario->tipo ?? 'guest' }}
+              {{ $usuario->tipoUsuario->nombre ?? 'Guest' }}
             </p>
           </div>
         </div>

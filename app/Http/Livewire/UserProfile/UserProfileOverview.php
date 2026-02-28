@@ -22,7 +22,6 @@ class UserProfileOverview extends Component
             'usuario.segundo_nombre' => 'nullable|max:100',
             'usuario.primer_apellido' => 'required|max:100|min:2',
             'usuario.segundo_apellido' => 'nullable|max:100',
-            'usuario.tipo' => 'nullable|max:100',
         ];
     }
 
@@ -37,7 +36,6 @@ class UserProfileOverview extends Component
             'usuario.primer_apellido.min' => 'El primer apellido debe tener al menos 2 caracteres',
             'usuario.primer_apellido.max' => 'El primer apellido no debe exceder los 100 caracteres',
             'usuario.segundo_apellido.max' => 'El segundo apellido no debe exceder los 100 caracteres',
-            'usuario.tipo.max' => 'El tipo de usuario no debe exceder los 100 caracteres',
         ];
     }
 

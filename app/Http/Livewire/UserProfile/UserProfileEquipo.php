@@ -13,8 +13,6 @@ class UserProfileEquipo extends Component
     public Usuario $usuario;
     public $asignaturas = [];
     public $asignatura_seleccionada = '';
-    public $mensaje_exito = '';
-    public $mensaje_error = '';
 
     public function mount(Usuario $usuario)
     {
@@ -45,7 +43,7 @@ class UserProfileEquipo extends Component
                 ->exists();
 
             if ($existe) {
-                $this->mensaje_error = 'Esta asignatura ya está asignada a este docente.';
+                $this->dispatch('notify', type: 'error', message: 'Esta asignatura ya está asignada a este docente.');
                 return;
             }
 
@@ -59,13 +57,10 @@ class UserProfileEquipo extends Component
             // Recargar la relación de asignaturas para mostrar el cambio sin recargar la página
             $this->usuario->load('asignaturasAsignadas');
 
-            $this->mensaje_exito = '¡Asignatura asignada correctamente!';
             $this->asignatura_seleccionada = '';
-
-            // Limpiar el mensaje de éxito después de 3 segundos
-            $this->dispatch('limpiarMensaje');
+            $this->dispatch('notify', type: 'success', message: '¡Asignatura asignada correctamente!');
         } catch (\Exception $e) {
-            $this->mensaje_error = 'Error al asignar la asignatura: ' . $e->getMessage();
+            $this->dispatch('notify', type: 'error', message: 'Error al asignar la asignatura: ' . $e->getMessage());
         }
     }
 
@@ -80,12 +75,9 @@ class UserProfileEquipo extends Component
             // Recargar la relación de asignaturas
             $this->usuario->load('asignaturasAsignadas');
 
-            $this->mensaje_exito = '¡Asignatura eliminada correctamente!';
-
-            // Limpiar el mensaje de éxito después de 3 segundos
-            $this->dispatch('limpiarMensaje');
+            $this->dispatch('notify', type: 'success', message: '¡Asignatura eliminada correctamente!');
         } catch (\Exception $e) {
-            $this->mensaje_error = 'Error al eliminar la asignatura: ' . $e->getMessage();
+            $this->dispatch('notify', type: 'error', message: 'Error al eliminar la asignatura: ' . $e->getMessage());
         }
     }
 
