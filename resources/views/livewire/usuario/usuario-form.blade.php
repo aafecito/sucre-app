@@ -58,12 +58,16 @@
     </div>
     <div class="col-6">
       <div class="form-group">
-        <label for="tipo-usuario" class="form-control-label">Tipo</label>
-        <input class="form-control" type="text" placeholder="Docente" id="tipo-usuario"
-          wire:model.live="usuario.tipo" maxlength="50">
+        <label for="tipo-usuario" class="form-control-label">Tipo de Usuario</label>
+        <select class="form-control" id="tipo-usuario" wire:model.live="usuario.id_tipo_usuario">
+          <option value="">Seleccionar tipo de usuario</option>
+          @foreach ($tiposUsuario as $tipo)
+            <option value="{{ $tipo->id_tipo_usuario }}">{{ $tipo->descripcion }}</option>
+          @endforeach
+        </select>
       </div>
       <span>
-        @error('usuario.tipo')
+        @error('usuario.id_tipo_usuario')
           <div style="color:red">
             {{ $message }}
           </div>

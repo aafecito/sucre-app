@@ -57,17 +57,6 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="usuario-tipo" class="form-control-label">{{ __('Tipo de Usuario') }}</label>
-      <div class="@error('usuario.tipo')border border-danger rounded-3 @enderror">
-        <input wire:model.live="usuario.tipo" class="form-control" id="usuario-tipo" type="text"
-          placeholder="Tipo de usuario (e.g., admin, docente)">
-      </div>
-      @error('usuario.tipo')
-        <div class="text-danger text-sm mt-1">{{ $message }}</div>
-      @enderror
-    </div>
-
     <div class="d-flex justify-content-end gap-2 mt-4">
       <button type="button" class="btn bg-gradient-dark btn-md" @click="$wire.guardar()">
         {{ __('Guardar Cambios') }}

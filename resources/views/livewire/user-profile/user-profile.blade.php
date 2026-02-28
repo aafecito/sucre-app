@@ -81,7 +81,7 @@
                       </g>
                     </g>
                   </svg>
-                  <span class="ms-1">{{ __('Teams') }}</span>
+                  <span class="ms-1">{{ __('Equipo') }}</span>
                 </button>
               </li>
               <li class="nav-item">
@@ -111,7 +111,7 @@
                       </g>
                     </g>
                   </svg>
-                  <span class="ms-1">{{ __('Projects') }}</span>
+                  <span class="ms-1">{{ __('Configuración') }}</span>
                 </button>
               </li>
             </ul>
@@ -131,12 +131,12 @@
 
     <!-- TEAMS TAB -->
     <div x-show="activeTab === 'teams'">
-      <livewire:user-profile.user-profile-teams :usuario="$usuario" />
+      <livewire:user-profile.user-profile-equipo :usuario="$usuario" />
     </div>
 
     <!-- PROJECTS TAB -->
     <div x-show="activeTab === 'projects'">
-      <livewire:user-profile.user-profile-projects :usuario="$usuario" />
+      <livewire:user-profile.user-profile-configuracion :usuario="$usuario" />
     </div>
 
   </div>

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Usuario;
 
 use Livewire\Component;
 use App\Models\Usuario;
+use App\Models\TipoUsuario;
 use Livewire\WithPagination;
 use Livewire\Attributes\On;
 
@@ -21,7 +22,8 @@ class UsuarioGrid extends Component
 	public function render()
 	{
 		return view('livewire.usuario.usuario-grid', [
-			'usuarios' => Usuario::activas()
+			'usuarios' => Usuario::with(['tipoUsuario', 'user'])
+				->activas()
 				->where(function ($query) {
 					$query->where('primer_nombre', 'like', '%' . $this->search . '%')
 						->orWhere('primer_apellido', 'like', '%' . $this->search . '%')
@@ -30,6 +32,7 @@ class UsuarioGrid extends Component
 				})
 				->orderBy('id_usuario', 'desc')
 				->paginate(10),
+			'tiposUsuario' => TipoUsuario::where('estado', true)->get(),
 		]);
 	}
 

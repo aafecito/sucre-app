@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\TipoUsuario;
 
 class Usuario extends Model
 {
@@ -20,7 +21,7 @@ class Usuario extends Model
         'segundo_nombre',
         'primer_apellido',
         'segundo_apellido',
-        'tipo',
+        'id_tipo_usuario',
         'estado',
         'id_user',
     ];
@@ -28,6 +29,11 @@ class Usuario extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'id_user', 'id');
+    }
+
+    public function tipoUsuario(): BelongsTo
+    {
+        return $this->belongsTo(TipoUsuario::class, 'id_tipo_usuario', 'id_tipo_usuario');
     }
 
     public function asignaturasAsignadas(): BelongsToMany

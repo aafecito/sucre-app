@@ -19,6 +19,9 @@
               Primer Nombre
             </th>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">
+              Segundo Nombre
+            </th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">
               Primer Apellido
             </th>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">
@@ -28,7 +31,7 @@
               Tipo
             </th>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">
-              Estado
+              Email
             </th>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">
               Acciones
@@ -50,6 +53,13 @@
               </td>
               <td class="align-middle text-center">
                 @if ($editingId === $usuario->id_usuario)
+                  <input type="text" class="form-control" wire:model="usuariosEditing.segundo_nombre">
+                @else
+                  {{ $usuario->segundo_nombre ?? '-' }}
+                @endif
+              </td>
+              <td class="align-middle text-center">
+                @if ($editingId === $usuario->id_usuario)
                   <input type="text" class="form-control" wire:model="usuariosEditing.primer_apellido">
                 @else
                   {{ $usuario->primer_apellido }}
@@ -59,18 +69,23 @@
                 @if ($editingId === $usuario->id_usuario)
                   <input type="text" class="form-control" wire:model="usuariosEditing.segundo_apellido">
                 @else
-                  {{ $usuario->segundo_apellido }}
+                  {{ $usuario->segundo_apellido ?? '-' }}
                 @endif
               </td>
               <td class="align-middle text-center">
                 @if ($editingId === $usuario->id_usuario)
-                  <input type="text" class="form-control" wire:model="usuariosEditing.tipo">
+                  <select class="form-control" wire:model="usuariosEditing.id_tipo_usuario">
+                    <option value="">Seleccionar tipo</option>
+                    @foreach ($tiposUsuario as $tipo)
+                      <option value="{{ $tipo->id_tipo_usuario }}">{{ $tipo->descripcion }}</option>
+                    @endforeach
+                  </select>
                 @else
-                  {{ $usuario->tipo }}
+                  {{ $usuario->tipoUsuario?->descripcion ?? '-' }}
                 @endif
               </td>
               <td class="align-middle text-center">
-                {{ $usuario->estado }}
+                {{ $usuario->user?->email ?? '-' }}
               </td>
               <td class="align-middle text-center">
                 @if ($editingId === $usuario->id_usuario)
